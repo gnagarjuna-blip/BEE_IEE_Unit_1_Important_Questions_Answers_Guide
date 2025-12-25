@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEE Unit-1: Complete Study Guide</title>
+    <title>BEE Unit-1: Complete Study Guide with Diagrams</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
@@ -13,6 +13,7 @@
             --accent: #d4af37;
             --border: #b0b0b0;
             --math-bg: #f9f9f9;
+            --diagram-bg: #fafafa;
         }
         body {
             font-family: 'Georgia', serif;
@@ -38,19 +39,28 @@
         }
         h1 { color: var(--navy); font-size: 2.5em; margin: 0; }
         h2 { color: var(--navy); border-bottom: 2px solid var(--navy); padding-bottom: 5px; margin-top: 50px; counter-increment: section; }
-        h2::before { content: "Question " counter(section) ": "; }
+        h2::before { content: "Q" counter(section) ". "; }
         h3 { color: #444; margin-top: 30px; border-left: 4px solid var(--accent); padding-left: 10px; }
         
         .content-section { margin-bottom: 60px; }
         
+        /* Diagram Styles */
         .diagram-container {
             text-align: center;
-            margin: 30px 0;
+            margin: 30px auto;
             padding: 20px;
-            background: #fafafa;
+            background: var(--diagram-bg);
             border: 1px solid #eee;
+            max-width: 80%;
+            border-radius: 8px;
         }
-        .diagram-caption { font-size: 0.9em; color: #666; font-style: italic; margin-top: 10px; }
+        .diagram-caption { font-size: 0.9em; color: #666; font-style: italic; margin-top: 10px; display: block;}
+        svg { font-family: sans-serif; }
+        .circuit-line { fill: none; stroke: black; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .component-text { font-size: 14px; fill: #333; }
+        .axis-line { stroke: #666; stroke-width: 2; marker-end: url(#arrowhead); }
+        .graph-line-ideal { stroke: #999; stroke-width: 2; stroke-dasharray: 5,5; fill: none; }
+        .graph-line-practical { stroke: #d4af37; stroke-width: 3; fill: none; }
 
         .comparison-table {
             width: 100%;
@@ -88,10 +98,28 @@
             border-radius: 20px;
             font-size: 0.8em;
             font-family: sans-serif;
+            margin-left: 10px;
         }
+        /* Hide SVG defs */
+        .svg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
     </style>
 </head>
 <body>
+
+<svg class="svg-defs">
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#666" />
+        </marker>
+        <marker id="curr-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+             <polygon points="0 0, 10 3.5, 0 7" fill="blue" />
+        </marker>
+         <marker id="curr-arrow-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+             <polygon points="0 0, 10 3.5, 0 7" fill="red" />
+        </marker>
+    </defs>
+</svg>
+
 
 <div class="textbook-page">
     <header>
@@ -108,12 +136,41 @@
         <p><strong>Detailed Explanation:</strong> KCL is based on the <strong>Law of Conservation of Charge</strong>. Since charge cannot accumulate at a node, the total current entering must equal the total current leaving.</p>
         <div class="math-block">$$\sum I_{incoming} = \sum I_{outgoing}$$</div>
         
+        <div class="diagram-container">
+            <svg width="300" height="180" viewBox="0 0 300 180">
+                <circle cx="150" cy="90" r="6" fill="black" />
+                <line x1="50" y1="90" x2="135" y2="90" stroke="blue" stroke-width="2" marker-end="url(#curr-arrow)"/>
+                <text x="60" y="80" fill="blue">I1 (in)</text>
+                <line x1="150" y1="10" x2="150" y2="75" stroke="blue" stroke-width="2" marker-end="url(#curr-arrow)"/>
+                <text x="160" y="40" fill="blue">I2 (in)</text>
+                <line x1="150" y1="105" x2="150" y2="170" stroke="red" stroke-width="2" marker-end="url(#curr-arrow-red)"/>
+                <text x="160" y="150" fill="red">I3 (out)</text>
+                 <line x1="165" y1="90" x2="250" y2="120" stroke="red" stroke-width="2" marker-end="url(#curr-arrow-red)"/>
+                <text x="200" y="100" fill="red">I4 (out)</text>
+            </svg>
+            <span class="diagram-caption">Figure 1.1: KCL at a Node. Equation: I1 + I2 = I3 + I4</span>
+        </div>
 
         <h3>2. Kirchhoff’s Voltage Law (KVL)</h3>
         <p><strong>Statement (2M):</strong> The algebraic sum of all voltages (EMFs and IR drops) in any closed loop of a network is zero.</p>
         <p><strong>Detailed Explanation:</strong> KVL is based on the <strong>Law of Conservation of Energy</strong>. It states that the energy supplied by the sources in a loop is exactly consumed by the components in that same loop.</p>
         <div class="math-block">$$\sum V_{sources} = \sum (I \times R)$$</div>
-        
+
+        <div class="diagram-container">
+            <svg width="300" height="150" viewBox="0 0 300 150">
+                <rect x="50" y="30" width="200" height="90" fill="none" stroke="black" stroke-width="2"/>
+                <line x1="50" y1="60" x2="50" y2="90" stroke="black" stroke-width="4"/> <line x1="42" y1="68" x2="58" y2="68" stroke="black" stroke-width="2"/> <text x="20" y="80">Vs</text>
+                <text x="40" y="55" font-size="12">+</text>
+                <text x="40" y="100" font-size="12">-</text>
+                <polyline points="100,30 105,20 115,40 125,20 135,40 145,20 150,30" fill="none" stroke="black" stroke-width="2"/>
+                <text x="120" y="15">R1</text>
+                <polyline points="250,60 240,65 260,75 240,85 260,95 250,100" fill="none" stroke="black" stroke-width="2" transform="rotate(90 250 80)"/>
+                <text x="265" y="85">R2</text>
+                <path d="M 130 75 A 20 20 0 1 1 170 75" fill="none" stroke="gray" stroke-width="2" marker-end="url(#arrowhead)"/>
+                 <text x="135" y="110" fill="gray" font-size="12">Loop Direction</text>
+            </svg>
+             <span class="diagram-caption">Figure 1.2: KVL Closed Loop. Equation: Vs - I(R1) - I(R2) = 0</span>
+        </div>
     </section>
 
     <section class="content-section">
@@ -134,7 +191,7 @@
             </tr>
             <tr>
                 <td><strong>Function</strong></td>
-                <td>Energy Donors. Can provide power gain.</td>
+                <td>Energy Donors. Can provide power gain (amplification).</td>
                 <td>Energy Acceptors. Cannot provide power gain.</td>
             </tr>
             <tr>
@@ -144,7 +201,7 @@
             </tr>
         </table>
         <div class="important-note">
-            <strong>Note:</strong> Inductors and Capacitors are passive even though they "give back" energy, because they can only return what they previously absorbed.
+            <strong>Key Concept:</strong> While Inductors (L) and Capacitors (C) temporarily store energy, they are still considered <strong>Passive</strong> because they cannot generate energy internally; they can only return energy they previously received from an active source. Resistors (R) dissipate energy as heat.
         </div>
     </section>
 
@@ -152,91 +209,257 @@
         <span class="marks-badge">5M / 10M</span>
         <h2>Voltage vs. Current Sources</h2>
         
-        <h3>Voltage Source</h3>
-        <p><strong>Ideal:</strong> Provides a constant voltage regardless of the current drawn. Internal resistance is <strong>zero</strong>.</p>
-        <p><strong>Practical:</strong> Has a small internal resistance in <strong>series</strong> ($R_s$), causing the terminal voltage to drop as current increases.</p>
-        
+        <h3>A. Voltage Source</h3>
+        <ul>
+            <li><strong>Ideal:</strong> Provides a constant terminal voltage regardless of the current drawn. Internal resistance is <strong>zero ($R_{int}=0$)</strong>.</li>
+            <li><strong>Practical:</strong> Due to material limitations, it has a small internal resistance connected in <strong>series</strong> ($R_{se}$). As load current ($I_L$) increases, the terminal voltage ($V_t$) drops due to the internal drop ($I_L \times R_{se}$).</li>
+        </ul>
 
-        <h3>Current Source</h3>
-        <p><strong>Ideal:</strong> Provides a constant current regardless of the terminal voltage. Internal resistance is <strong>infinite</strong>.</p>
-        <p><strong>Practical:</strong> Has a high internal resistance in <strong>parallel</strong> ($R_{sh}$), causing the output current to decrease as terminal voltage rises.</p>
-        
+        <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+            <div class="diagram-container" style="flex:1; min-width: 250px;">
+                <svg width="250" height="120" viewBox="0 0 250 120">
+                     <circle cx="60" cy="60" r="25" fill="none" stroke="black" stroke-width="2"/>
+                     <text x="50" y="55" font-size="16">+</text>
+                     <text x="50" y="75" font-size="16">-</text>
+                     <text x="45" y="25">V_source</text>
+                     <line x1="85" y1="60" x2="110" y2="60" class="circuit-line"/>
+                     <polyline points="110,60 115,50 125,70 135,50 145,70 150,60" fill="none" stroke="black" stroke-width="2"/>
+                     <text x="120" y="40">R_se</text>
+                     <line x1="150" y1="60" x2="200" y2="60" class="circuit-line"/>
+                     <circle cx="200" cy="60" r="3" fill="black"/> <text x="210" y="65">A</text>
+                     <line x1="60" y1="85" x2="60" y2="100" class="circuit-line"/>
+                     <line x1="60" y1="100" x2="200" y2="100" class="circuit-line"/>
+                     <circle cx="200" cy="100" r="3" fill="black"/> <text x="210" y="105">B</text>
+                     <text x="220" y="85">V_terminal</text>
+                </svg>
+                <span class="diagram-caption">Fig 3.1a: Practical Voltage Source Model</span>
+            </div>
+             <div class="diagram-container" style="flex:1; min-width: 250px;">
+                <svg width="250" height="120" viewBox="0 0 250 120">
+                     <line x1="30" y1="100" x2="230" y2="100" class="axis-line"/> <line x1="30" y1="100" x2="30" y2="10" class="axis-line"/> <text x="235" y="105">I (Load)</text>
+                     <text x="20" y="15">V</text>
+                     <line x1="30" y1="30" x2="220" y2="30" class="graph-line-ideal"/>
+                     <text x="150" y="25" fill="#999" font-size="12">Ideal (R_se=0)</text>
+                     <line x1="30" y1="30" x2="220" y2="80" class="graph-line-practical"/>
+                     <text x="100" y="70" fill="#d4af37" font-size="12">Practical (Droop)</text>
+                </svg>
+                 <span class="diagram-caption">Fig 3.1b: V-I Characteristics</span>
+            </div>
+        </div>
+
+        <h3>B. Current Source</h3>
+        <ul>
+            <li><strong>Ideal:</strong> Provides a constant current regardless of the terminal voltage. Internal resistance is <strong>infinite ($R_{int}=\infty$)</strong>.</li>
+            <li><strong>Practical:</strong> Has a very high internal resistance connected in <strong>parallel</strong> ($R_{sh}$). As terminal voltage increases, some current leaks through the internal resistor, slightly reducing the output current.</li>
+        </ul>
+
+        <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+            <div class="diagram-container" style="flex:1; min-width: 250px;">
+                <svg width="250" height="120" viewBox="0 0 250 120">
+                     <circle cx="60" cy="60" r="25" fill="none" stroke="black" stroke-width="2"/>
+                     <line x1="60" y1="45" x2="60" y2="75" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+                     <text x="30" y="65">I_s</text>
+                     
+                     <line x1="60" y1="35" x2="60" y2="20" class="circuit-line"/>
+                     <line x1="60" y1="20" x2="130" y2="20" class="circuit-line"/>
+                     <line x1="60" y1="85" x2="60" y2="100" class="circuit-line"/>
+                     <line x1="60" y1="100" x2="130" y2="100" class="circuit-line"/>
+
+                     <line x1="130" y1="20" x2="130" y2="40" class="circuit-line"/>
+                     <polyline points="130,40 120,50 140,60 120,70 140,80 130,90" fill="none" stroke="black" stroke-width="2"/>
+                     <line x1="130" y1="90" x2="130" y2="100" class="circuit-line"/>
+                     <text x="145" y="65">R_sh</text>
+
+                     <line x1="130" y1="20" x2="200" y2="20" class="circuit-line"/>
+                     <circle cx="200" cy="20" r="3" fill="black"/> <text x="210" y="25">A</text>
+                      <line x1="130" y1="100" x2="200" y2="100" class="circuit-line"/>
+                     <circle cx="200" cy="100" r="3" fill="black"/> <text x="210" y="105">B</text>
+                </svg>
+                <span class="diagram-caption">Fig 3.2a: Practical Current Source Model</span>
+            </div>
+             <div class="diagram-container" style="flex:1; min-width: 250px;">
+                <svg width="250" height="120" viewBox="0 0 250 120">
+                     <line x1="30" y1="100" x2="230" y2="100" class="axis-line"/> <line x1="30" y1="100" x2="30" y2="10" class="axis-line"/> <text x="235" y="105">V (Terminal)</text>
+                     <text x="20" y="15">I</text>
+                     <line x1="30" y1="30" x2="220" y2="30" class="graph-line-ideal"/>
+                     <text x="150" y="25" fill="#999" font-size="12">Ideal (R_sh=&#8734;)</text>
+                     <line x1="30" y1="30" x2="220" y2="80" class="graph-line-practical"/>
+                     <text x="100" y="70" fill="#d4af37" font-size="12">Practical (Leakage)</text>
+                </svg>
+                 <span class="diagram-caption">Fig 3.2b: I-V Characteristics</span>
+            </div>
+        </div>
     </section>
 
     <section class="content-section">
         <span class="marks-badge">10 Marks</span>
         <h2>Series R-C Circuit Analysis</h2>
         <div class="important-note">
-            <strong>Problem:</strong> $R = 10 \Omega$, $C = 0.1 F$, $V = 20 V$ applied at $t = 0$.
+            <strong>Given Data:</strong> Resistance $R = 10 \Omega$, Capacitance $C = 0.1 F$, Constant Voltage $V = 20 V$ applied at $t = 0$.
         </div>
 
-        <h3>1. Time Constant ($\tau$)</h3>
-        <div class="math-block">$$\tau = R \times C = 10 \times 0.1 = 1 \text{ second}$$</div>
+        <h3>Step 1: Determine Time Constant ($\tau$)</h3>
+        <p>The time constant determines the speed of charging/discharging.</p>
+        <div class="math-block">$$\tau = R \times C = 10 \Omega \times 0.1 F = 1 \text{ second}$$</div>
 
-        <h3>2. Current Equation $i(t)$</h3>
-        <p>Initial current $I_0 = V/R = 20/10 = 2A$. The current decays exponentially:</p>
+        <h3>Step 2: Obtain Current Equation $i(t)$</h3>
+        <p>At the instant the switch closes ($t=0$), the uncharged capacitor acts as a short circuit. The initial current is maximum:</p>
+        <p>$I_0 = \frac{V}{R} = \frac{20}{10} = 2A$.</p>
+        <p>The current decays exponentially as the capacitor charges:</p>
         <div class="math-block">$$i(t) = I_0 e^{-t/\tau} = 2 e^{-t} \text{ Amperes}$$</div>
 
-        <h3>3. Voltage Determinations</h3>
+        <h3>Step 3: Determine Voltages</h3>
         <ul>
-            <li><strong>Resistor Voltage ($V_R$):</strong> $V_R(t) = i(t) \cdot R = 20 e^{-t} \text{ Volts}$</li>
-            <li><strong>Capacitor Voltage ($V_C$):</strong> $V_C(t) = V(1 - e^{-t/\tau}) = 20(1 - e^{-t}) \text{ Volts}$</li>
+            <li><strong>Voltage across Resistor ($V_R$):</strong> By Ohm's law, $V_R = i(t) \times R$.
+                <div class="math-block">$$V_R(t) = (2 e^{-t}) \times 10 = 20 e^{-t} \text{ Volts}$$</div>
+            </li>
+            <li><strong>Voltage across Capacitor ($V_C$):</strong> By KVL, $V = V_R + V_C$, so $V_C = V - V_R$.
+                <div class="math-block">$$V_C(t) = 20 - 20 e^{-t} = 20(1 - e^{-t}) \text{ Volts}$$</div>
+            </li>
         </ul>
-        
+
+         <div class="diagram-container">
+            <svg width="400" height="200" viewBox="0 0 400 200">
+                 <line x1="40" y1="180" x2="380" y2="180" class="axis-line"/> <text x="385" y="185">time (t)</text>
+                 <line x1="40" y1="180" x2="40" y2="20" class="axis-line"/> <text x="20" y="20">Magnitude</text>
+                 <line x1="35" y1="40" x2="45" y2="40" stroke="black"/> <text x="10" y="45">20V / 2A</text>
+                 <line x1="40" y1="40" x2="380" y2="40" stroke="#ddd" stroke-dasharray="4"/>
+
+                 <path d="M 40 40 C 100 120, 180 170, 360 178" fill="none" stroke="red" stroke-width="3"/>
+                 <text x="180" y="150" fill="red" font-weight="bold">i(t) Current Decay</text>
+                 
+                 <path d="M 40 180 C 100 100, 180 50, 360 42" fill="none" stroke="blue" stroke-width="3"/>
+                 <text x="180" y="80" fill="blue" font-weight="bold">Vc(t) Voltage Rise</text>
+                 
+                 <line x1="120" y1="180" x2="120" y2="170" stroke="black"/> <text x="115" y="195">t=&#964; (1s)</text>
+            </svg>
+            <span class="diagram-caption">Figure 4.1: Transient response of Current i(t) and Capacitor Voltage Vc(t). At t=&#964;, values reach approx 63% (rise) or 37% (decay) of final value.</span>
+        </div>
     </section>
 
     <section class="content-section">
         <span class="marks-badge">10 Marks</span>
-        <h2>V-I Characteristics of R, L, and C</h2>
+        <h2>V-I Characteristics of Passive Elements (R, L, C)</h2>
+        <p>This explains how Voltage (V) and Current (I) relate in phase for different components when subjected to AC.</p>
         
         <h3>1. Resistor (R)</h3>
-        <p>Follows Ohm’s Law. Voltage and Current are <strong>in phase</strong>.</p>
-        <div class="math-block">$$V = I \times R$$</div>
+        <p>In a pure resistor, voltage and current are <strong>in phase</strong>. They reach their maximum and zero values simultaneously.</p>
+        <div class="math-block">$$V = IR$$</div>
 
         <h3>2. Inductor (L)</h3>
-        <p>Voltage <strong>leads</strong> current by $90^\circ$. It stores energy in a magnetic field.</p>
+        <p>In a pure inductor, the <strong>Voltage leads the Current by 90° ($\pi/2$ rad)</strong>. The inductor opposes changes in current. Energy is stored in the magnetic field.</p>
         <div class="math-block">$$v(t) = L \frac{di}{dt}$$</div>
-        
 
         <h3>3. Capacitor (C)</h3>
-        <p>Current <strong>leads</strong> voltage by $90^\circ$. It stores energy in an electric field.</p>
+        <p>In a pure capacitor, the <strong>Current leads the Voltage by 90° ($\pi/2$ rad)</strong>. The capacitor opposes changes in voltage. Energy is stored in the electric field.</p>
         <div class="math-block">$$i(t) = C \frac{dv}{dt}$$</div>
-        
+
+         <div class="diagram-container">
+            <svg width="500" height="150" viewBox="0 0 500 150">
+                 <g transform="translate(50,20)">
+                    <text x="30" y="-5" font-weight="bold">Resistor (In Phase)</text>
+                    <line x1="0" y1="50" x2="100" y2="50" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <text x="105" y="55">V</text>
+                    <line x1="0" y1="55" x2="80" y2="55" stroke="blue" stroke-width="2" marker-end="url(#curr-arrow)"/>
+                     <text x="85" y="65" fill="blue">I</text>
+                 </g>
+
+                 <g transform="translate(220,20)">
+                    <text x="10" y="-5" font-weight="bold">Inductor (V leads I)</text>
+                    <line x1="0" y1="50" x2="100" y2="50" stroke="blue" stroke-width="2" marker-end="url(#curr-arrow)"/>
+                    <text x="105" y="55" fill="blue">I</text>
+                    <line x1="0" y1="50" x2="0" y2="-30" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+                     <text x="-10" y="-35">V</text>
+                    <path d="M 20 50 A 20 20 0 0 0 0 30" fill="none" stroke="gray"/>
+                    <text x="25" y="35" font-size="12">90°</text>
+                 </g>
+
+                 <g transform="translate(380,20)">
+                    <text x="5" y="-5" font-weight="bold">Capacitor (I leads V)</text>
+                    <line x1="0" y1="50" x2="100" y2="50" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <text x="105" y="55">V</text>
+                    <line x1="0" y1="50" x2="0" y2="-30" stroke="blue" stroke-width="2" marker-end="url(#curr-arrow)"/>
+                     <text x="-10" y="-35" fill="blue">I</text>
+                    <path d="M 20 50 A 20 20 0 0 0 0 30" fill="none" stroke="gray"/>
+                    <text x="25" y="35" font-size="12">90°</text>
+                 </g>
+            </svg>
+            <span class="diagram-caption">Figure 5.1: Phasor diagrams showing phase relationship between Voltage (Black) and Current (Blue).</span>
+        </div>
     </section>
 
     <section class="content-section">
-        <span class="marks-badge">10 Marks</span>
+        <span class="marks-badge">5M / 10M</span>
         <h2>Superposition Theorem</h2>
-        <p><strong>Statement:</strong> In any linear, bilateral network containing more than one source, the response in any element is the algebraic sum of the responses produced by each source acting alone.</p>
+        <div class="important-note">
+            <strong>Statement:</strong> In any linear, bilateral network containing two or more independent sources, the response (current or voltage) in any element is the algebraic sum of the responses produced by each source acting alone, while all other sources are replaced by their internal resistances.
+        </div>
         
-        <h3>Steps for Analysis:</h3>
+        <h3>Steps for Analysis (10M Procedure):</h3>
         <ol>
-            <li>Select one independent source and deactivate others.</li>
-            <li><strong>Deactivation:</strong> Replace Voltage sources with <strong>Short Circuits</strong> and Current sources with <strong>Open Circuits</strong>.</li>
-            <li>Calculate the current/voltage in the desired branch.</li>
-            <li>Repeat for all sources and sum the results algebraically.</li>
+            <li>Consider one independent source at a time.</li>
+            <li>Deactivate all other independent sources:
+                <ul>
+                    <li>Replace <strong>Voltage Sources</strong> with a <strong>Short Circuit</strong> (0V).</li>
+                    <li>Replace <strong>Current Sources</strong> with an <strong>Open Circuit</strong> (0A).</li>
+                </ul>
+            </li>
+            <li>Calculate the desired current/voltage produced by the single active source using standard circuit analysis (KCL/KVL/Ohm's law).</li>
+            <li>Repeat the process for every independent source in the circuit.</li>
+            <li>The total response is the algebraic sum of individual responses. (Note direction/polarity).</li>
         </ol>
-        <div class="important-note"><strong>Limitation:</strong> Applicable only to <strong>Linear</strong> circuits. It cannot be used to calculate Power directly (since power is $I^2R$, a non-linear relation).</div>
+        <p><strong>Constraint:</strong> Superposition is valid only for linear circuits. It <strong>cannot</strong> be used directly to calculate power, as power ($P=I^2R$) is a non-linear relationship.</p>
     </section>
 
     <section class="content-section">
         <span class="marks-badge">10 Marks</span>
         <h2>Thevenin's and Norton's Theorems</h2>
+        <p>These theorems allow complex linear networks to be simplified into a single source and a single resistor with respect to two load terminals (A and B).</p>
         
         <h3>1. Thevenin’s Theorem</h3>
-        <p><strong>Statement (2M):</strong> Any two-terminal linear network can be replaced by an equivalent circuit consisting of a voltage source $V_{th}$ in series with a resistance $R_{th}$.</p>
+        <p><strong>Statement (2M):</strong> Any two-terminal linear DC network can be replaced by an equivalent circuit consisting of a single voltage source ($V_{th}$) in series with a single resistance ($R_{th}$).</p>
         
-
-[Image of Thevenin equivalent circuit]
-
+         <div class="diagram-container">
+            <svg width="300" height="120" viewBox="0 0 300 120">
+                <circle cx="60" cy="60" r="25" fill="none" stroke="black" stroke-width="2"/>
+                <text x="50" y="55" font-size="16">+</text> <text x="50" y="75" font-size="16">-</text>
+                <text x="45" y="25">V_th</text>
+                <line x1="60" y1="85" x2="60" y2="100" class="circuit-line"/> <line x1="60" y1="100" x2="250" y2="100" class="circuit-line"/>
+                <line x1="60" y1="35" x2="60" y2="20" class="circuit-line"/> <line x1="60" y1="20" x2="100" y2="20" class="circuit-line"/>
+                <polyline points="100,20 110,10 130,30 150,10 170,30 180,20" fill="none" stroke="black" stroke-width="2"/>
+                <text x="125" y="50">R_th</text>
+                <line x1="180" y1="20" x2="250" y2="20" class="circuit-line"/>
+                <circle cx="250" cy="20" r="4" fill="white" stroke="black" stroke-width="2"/> <text x="260" y="25">A</text>
+                <circle cx="250" cy="100" r="4" fill="white" stroke="black" stroke-width="2"/> <text x="260" y="105">B</text>
+            </svg>
+            <span class="diagram-caption">Figure 7.1: Thevenin Equivalent Circuit</span>
+        </div>
 
         <h3>2. Norton’s Theorem</h3>
-        <p><strong>Statement (2M):</strong> Any two-terminal linear network can be replaced by an equivalent circuit consisting of a current source $I_n$ in parallel with a resistance $R_n$.</p>
-        
+        <p><strong>Statement (2M):</strong> Any two-terminal linear DC network can be replaced by an equivalent circuit consisting of a single current source ($I_n$) in parallel with a single resistance ($R_n$).</p>
+         <div class="diagram-container">
+            <svg width="300" height="140" viewBox="0 0 300 140">
+                <circle cx="60" cy="70" r="25" fill="none" stroke="black" stroke-width="2"/>
+                <line x1="60" y1="55" x2="60" y2="85" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+                <text x="30" y="75">I_n</text>
+                <line x1="60" y1="45" x2="60" y2="20" class="circuit-line"/> <line x1="60" y1="20" x2="250" y2="20" class="circuit-line"/>
+                <line x1="60" y1="95" x2="60" y2="120" class="circuit-line"/> <line x1="60" y1="120" x2="250" y2="120" class="circuit-line"/>
+                <line x1="150" y1="20" x2="150" y2="40" class="circuit-line"/>
+                <polyline points="150,40 140,50 160,70 140,90 160,110 150,120" fill="none" stroke="black" stroke-width="2"/>
+                <text x="170" y="80">R_n</text>
+                 <circle cx="250" cy="20" r="4" fill="white" stroke="black" stroke-width="2"/> <text x="260" y="25">A</text>
+                <circle cx="250" cy="120" r="4" fill="white" stroke="black" stroke-width="2"/> <text x="260" y="125">B</text>
+            </svg>
+            <span class="diagram-caption">Figure 7.2: Norton Equivalent Circuit</span>
+        </div>
 
-        <h3>Comparison & Relation</h3>
-        <p>Thevenin and Norton are duals of each other. They are related by Source Transformation:</p>
-        <div class="math-block">$$R_{th} = R_n \quad \text{and} \quad V_{th} = I_n \times R_{th}$$</div>
+        <h3>Key Relationships (For 10M Explanations):</h3>
+        <ul>
+            <li><strong>$V_{th}$ (Thevenin Voltage):</strong> The Open Circuit Voltage ($V_{oc}$) measured across terminals A-B.</li>
+            <li><strong>$I_n$ (Norton Current):</strong> The Short Circuit Current ($I_{sc}$) measured flowing between terminals A-B when shorted.</li>
+            <li><strong>$R_{th} = R_n$:</strong> The equivalent resistance of the network looking into terminals A-B when all independent sources are deactivated.</li>
+        </ul>
+        <p><strong>Source Transformation relation:</strong> $V_{th} = I_n \times R_{th}$</p>
     </section>
 </div>
 
