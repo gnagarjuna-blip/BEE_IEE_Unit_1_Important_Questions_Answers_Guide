@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEE Unit-1 DC Circuits Q&A</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            width: 95%;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        header {
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #007bff;
+            margin-bottom: 25px;
+        }
+        header h1 { color: #007bff; margin: 5px 0; }
+        header p { font-style: italic; color: #666; }
+
+        h2 { color: #2c3e50; border-left: 5px solid #007bff; padding-left: 10px; margin-top: 30px; }
+
+        /* Theory Section Styling */
+        details {
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: #e9f5ff;
+            outline: none;
+        }
+        details[open] summary {
+            background-color: #007bff;
+            color: white;
+        }
+        .ans-content {
+            padding: 15px;
+            background-color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Numerical Problem Section */
+        .problem-card {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fcfcfc;
+        }
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        .step-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            flex: 1;
+            min-width: 100px;
+        }
+        .step-btn:hover { background-color: #218838; }
+        
+        .step-content {
+            display: none;
+            padding: 15px;
+            margin-top: 5px;
+            background-color: #fff;
+            border-left: 4px solid #28a745;
+            border-bottom: 1px solid #eee;
+            line-height: 1.6;
+        }
+        .img-placeholder {
+            background: #eee;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #777;
+            margin: 10px 0;
+            border: 1px dashed #bbb;
+        }
+        code { background: #f0f0f0; padding: 2px 4px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Unit-1: DC Circuits</h1>
+        <p>Basic Electrical Engineering - Important Questions & Solutions</p>
+    </header>
+
+    <h2>Part A: Theory Concepts</h2>
+
+    <details>
+        <summary>1. State and explain KCL and KVL (5M/10M)</summary>
+        <div class="ans-content">
+            <strong>Kirchhoff’s Current Law (KCL):</strong> The algebraic sum of currents meeting at a junction (node) in an electric circuit is zero. 
+            <br><em>&Sigma;I = 0</em>. (Incoming currents = Outgoing currents).
+            <br><br>
+            <strong>Kirchhoff’s Voltage Law (KVL):</strong> The algebraic sum of all voltages (EMFs and IR drops) in any closed loop of a network is zero.
+            <br><em>&Sigma;V = 0</em>.
+        </div>
+    </details>
+
+    <details>
+        <summary>2. Explain Active and Passive elements? (5M/10M)</summary>
+        <div class="ans-content">
+            <strong>Active Elements:</strong> Elements capable of delivering or amplifying energy (e.g., Voltage sources, Current sources, Transistors, Op-amps).
+            <br><br>
+            <strong>Passive Elements:</strong> Elements that consume or store energy but cannot generate it (e.g., Resistors, Inductors, Capacitors).
+        </div>
+    </details>
+
+    <details>
+        <summary>3. Difference between Current and Voltage sources? Ideal vs Practical. (5M/10M)</summary>
+        <div class="ans-content">
+            <strong>Voltage Source:</strong> Maintains a specific voltage. An <em>Ideal</em> source has zero internal resistance; a <em>Practical</em> source has a small resistance in series.
+            <br><br>
+            <strong>Current Source:</strong> Maintains a specific current. An <em>Ideal</em> source has infinite internal resistance; a <em>Practical</em> source has a high resistance in parallel.
+        </div>
+    </details>
+
+    <details>
+        <summary>5. Explain V-I characteristics of R, L, C (5M/10M)</summary>
+        <div class="ans-content">
+            <strong>Resistor (R):</strong> Linear relationship (Ohm's Law: V = IR). The graph is a straight line through the origin.
+            <br><strong>Inductor (L):</strong> V = L(di/dt). Voltage depends on the rate of change of current.
+            <br><strong>Capacitor (C):</strong> I = C(dv/dt). Current depends on the rate of change of voltage.
+        </div>
+    </details>
+
+    <details>
+        <summary>6. State and explain Superposition Theorem (5M/10M)</summary>
+        <div class="ans-content">
+            <strong>Statement:</strong> In any linear, bilateral network containing multiple sources, the response (current/voltage) in any branch is the algebraic sum of the responses caused by each source acting alone, while all other independent sources are replaced by their internal resistances.
+        </div>
+    </details>
+
+    <details>
+        <summary>7. State Thevenin’s and Norton’s Theorems (5M/10M)</summary>
+        <div class="ans-content">
+            <strong>Thevenin’s:</strong> Any linear circuit can be replaced by a single voltage source (Vth) in series with a resistance (Rth).
+            <br><br>
+            <strong>Norton’s:</strong> Any linear circuit can be replaced by a single current source (In) in parallel with a resistance (Rn).
+        </div>
+    </details>
+
+    <h2>Part B: Numericals & Derivations</h2>
+
+    <div class="problem-card">
+        <p><strong>8(I). Find V1 and V2 using Nodal Analysis (Image 2)</strong></p>
+        <div class="img-placeholder">[Refer to Green Circuit Diagram with 1A and 4A sources]</div>
+        <div class="btn-group">
+            <button class="step-btn" onclick="toggleStep('n1_1')">Equations</button>
+            <button class="step-btn" onclick="toggleStep('n1_2')">Solution</button>
+        </div>
+        <div id="n1_1" class="step-content">
+            <strong>Node 1:</strong> 1 = V1/2 + (V1 - V2)/6 <br>
+            Multiply by 6: 6 = 3V1 + V1 - V2 &rarr; <strong>4V1 - V2 = 6</strong> (Eq 1)<br><br>
+            <strong>Node 2:</strong> (V1 - V2)/6 = V2/7 + 4 <br>
+            Multiply by 42: 7V1 - 7V2 = 6V2 + 168 &rarr; <strong>7V1 - 13V2 = 168</strong> (Eq 2)
+        </div>
+        <div id="n1_2" class="step-content">
+            Solving Eq 1 & 2:<br>
+            From Eq 1: V2 = 4V1 - 6<br>
+            Substitute in Eq 2: 7V1 - 13(4V1 - 6) = 168<br>
+            7V1 - 52V1 + 78 = 168 &rarr; -45V1 = 90 &rarr; <strong>V1 = -2 V</strong><br>
+            V2 = 4(-2) - 6 = <strong>-14 V</strong>
+        </div>
+    </div>
+
+    <div class="problem-card">
+        <p><strong>8(II). Current through 10&Omega; resistor using Mesh Analysis (Image 1)</strong></p>
+        <div class="img-placeholder">[Refer to Circuit with 50V and 25V sources]</div>
+        <div class="btn-group">
+            <button class="step-btn" onclick="toggleStep('m1_1')">Mesh Eq</button>
+            <button class="step-btn" onclick="toggleStep('m1_2')">Solution</button>
+        </div>
+        <div id="m1_1" class="step-content">
+            <strong>Mesh 1:</strong> 50 - 10I1 - 5(I1 - I2) = 0 &rarr; 15I1 - 5I2 = 50 &rarr; <strong>3I1 - I2 = 10</strong><br>
+            <strong>Mesh 2:</strong> -5(I2 - I1) - 10I2 - 25 = 0 &rarr; -5I2 + 5I1 - 10I2 = 25 &rarr; <strong>I1 - 3I2 = 5</strong>
+        </div>
+        <div id="m1_2" class="step-content">
+            Solving simultaneously:<br>
+            I1 = 3.125 A, I2 = -0.625 A<br>
+            <strong>Current through left 10&Omega;:</strong> 3.125 A<br>
+            <strong>Current through right 10&Omega;:</strong> 0.625 A (opposite to assumed direction)
+        </div>
+    </div>
+
+    <div class="problem-card">
+        <p><strong>8(i). Three resistors R1, R2, R3 in series. Find V if current is 5A.</strong></p>
+        <div class="btn-group">
+            <button class="step-btn" onclick="toggleStep('s1_1')">Given/Steps</button>
+            <button class="step-btn" onclick="toggleStep('s1_2')">Solution</button>
+        </div>
+        <div id="s1_1" class="step-content">
+            I = 5A, VR1 = 20V, PR2 = 25W, R3 = 2&Omega;<br>
+            1. Find R1 using Ohm's Law (R = V/I).<br>
+            2. Find R2 using Power formula (P = I²R).<br>
+            3. Find Total Resistance and Total Voltage.
+        </div>
+        <div id="s1_2" class="step-content">
+            R1 = 20/5 = 4&Omega;<br>
+            R2 = P/I² = 25/(5²) = 25/25 = 1&Omega;<br>
+            Total R = 4 + 1 + 2 = 7&Omega;<br>
+            <strong>Total Voltage V = I &times; R = 5 &times; 7 = 35 V</strong>
+        </div>
+    </div>
+
+    <div class="problem-card">
+        <p><strong>9. Transient Response of Series R-L and R-C Circuits</strong></p>
+        <div class="btn-group">
+            <button class="step-btn" onclick="toggleStep('t1_1')">R-L Circuit</button>
+            <button class="step-btn" onclick="toggleStep('t1_2')">R-C Circuit</button>
+        </div>
+        <div id="t1_1" class="step-content">
+            <strong>Equation:</strong> V = Ri + L(di/dt)<br>
+            <strong>Solution:</strong> i(t) = (V/R)[1 - e<sup>-(R/L)t</sup>]<br>
+            Time Constant (&tau;) = L/R. Current grows exponentially.
+        </div>
+        <div id="t1_2" class="step-content">
+            <strong>Equation:</strong> V = Ri + (1/C)&int;i dt<br>
+            <strong>Solution:</strong> v<sub>c</sub>(t) = V[1 - e<sup>-t/RC</sup>]<br>
+            Time Constant (&tau;) = RC. Voltage across capacitor builds up exponentially.
+        </div>
+    </div>
+
+    <div class="problem-card">
+        <p><strong>10. 2&Omega;, 4&Omega;, 6&Omega; in series across 24V. Find V across each.</strong></p>
+        <div class="btn-group">
+            <button class="step-btn" onclick="toggleStep('f1_1')">Calculations</button>
+        </div>
+        <div id="f1_1" class="step-content">
+            Total R = 2 + 4 + 6 = 12&Omega;<br>
+            Current I = V/R = 24/12 = 2A<br>
+            <strong>V1 (2&Omega;):</strong> 2 &times; 2 = 4V<br>
+            <strong>V2 (4&Omega;):</strong> 2 &times; 4 = 8V<br>
+            <strong>V3 (6&Omega;):</strong> 2 &times; 6 = 12V<br>
+            <strong>Total Power:</strong> P = V &times; I = 24 &times; 2 = 48W
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function toggleStep(id) {
+        const element = document.getElementById(id);
+        if (element.style.display === "block") {
+            element.style.display = "none";
+        } else {
+            element.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
