@@ -3,250 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Electrical Engineering - Unit 1 Study Guide</title>
+    <title>BEE Unit-1: Professional Study Guide</title>
     <style>
         :root {
-            --textbook-blue: #003366;
-            --textbook-gray: #f2f2f2;
-            --accent-green: #008000;
-            --border-color: #cccccc;
+            --navy: #002147;
+            --light-gray: #f4f7f6;
+            --accent: #d4af37;
+            --border: #b0b0b0;
         }
         body {
-            font-family: 'Times New Roman', Times, serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background-color: #fafafa;
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #222;
+            background-color: #e5e5e5;
             margin: 0;
             padding: 20px;
         }
-        .container {
-            max-width: 950px;
+        .textbook-page {
+            max-width: 900px;
             margin: 0 auto;
-            background: #ffffff;
-            padding: 40px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            border: 1px solid var(--border-color);
+            background: #fff;
+            padding: 50px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
+            border: 1px solid var(--border);
         }
         header {
             text-align: center;
-            border-bottom: 3px double var(--textbook-blue);
-            margin-bottom: 30px;
-            padding-bottom: 15px;
+            border-bottom: 4px double var(--navy);
+            margin-bottom: 40px;
+            padding-bottom: 20px;
         }
-        h1 { color: var(--textbook-blue); font-size: 2.2em; text-transform: uppercase; margin: 0; }
-        h2 { color: var(--textbook-blue); border-left: 6px solid var(--textbook-blue); padding-left: 15px; margin-top: 40px; }
+        h1 { color: var(--navy); font-size: 2.5em; margin: 0; }
+        h2 { color: var(--navy); border-bottom: 2px solid var(--navy); padding-bottom: 5px; margin-top: 40px; }
+        h3 { color: #444; margin-top: 30px; text-decoration: underline; }
         
-        .qa-card {
-            margin-bottom: 25px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-        }
-        .q-header {
-            background-color: var(--textbook-gray);
-            padding: 15px 20px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1.1em;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .q-header:hover { background-color: #e6e6e6; }
-        .q-body { display: none; padding: 25px; border-top: 1px solid var(--border-color); }
-        .active .q-body { display: block; }
-
-        .marks-label {
-            background: var(--textbook-blue);
-            color: white;
-            padding: 3px 12px;
-            border-radius: 20px;
-            font-size: 0.85em;
-        }
-
+        .content-section { margin-bottom: 40px; }
+        
         .diagram-container {
-            margin: 20px 0;
-            padding: 15px;
-            background: #fff;
-            border: 1px dashed #666;
             text-align: center;
-            color: #444;
+            margin: 30px 0;
+            padding: 20px;
+            background: #fafafa;
+            border: 1px solid #eee;
+        }
+        .diagram-caption {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
             font-style: italic;
         }
 
-        .solution-step {
-            background: #f9fff9;
-            border-left: 5px solid var(--accent-green);
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid var(--border);
             padding: 15px;
-            margin: 15px 0;
+            text-align: left;
+        }
+        .comparison-table th { background-color: var(--light-gray); color: var(--navy); }
+
+        .important-note {
+            background-color: #fff9e6;
+            border-left: 5px solid var(--accent);
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
         }
 
-        .step-btn {
-            background: var(--accent-green);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            margin-right: 10px;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 0.9em;
+        .formula {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            display: block;
+            text-align: center;
+            font-size: 1.2em;
+            margin: 15px 0;
+            color: var(--navy);
         }
-        
-        .step-content { display: none; margin-top: 15px; }
-        
-        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
-        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-        th { background: var(--textbook-gray); }
     </style>
 </head>
 <body>
 
-<div class="container">
+<div class="textbook-page">
     <header>
-        <h1>Electrical Engineering Textbook Solutions</h1>
-        <p>Unit-1: DC Circuits | Detailed Explanations & Numericals</p>
+        <h1>BASIC ELECTRICAL ENGINEERING</h1>
+        <p>Unit 1: DC Circuits - Complete Theory and Analysis</p>
     </header>
 
-    <div class="qa-card">
-        <div class="q-header" onclick="toggleQ(this)">
-            1. State and explain KCL and KVL <span class="marks-label">5M / 10M</span>
-        </div>
-        <div class="q-body">
-            <h3>Kirchhoff's Current Law (KCL)</h3>
-            <p><strong>Statement (2M):</strong> The algebraic sum of currents meeting at a junction (node) in an electrical circuit is zero. Sum of incoming currents = Sum of outgoing currents.</p>
-            
+    <section class="content-section">
+        <h2>1. State and Explain KCL and KVL (10 Marks)</h2>
+        
+        <h3>A. Kirchhoff's Current Law (KCL)</h3>
+        <p><strong>Statement:</strong> In any electrical network, the algebraic sum of currents meeting at a point (node) is zero. In other words, the sum of currents entering a junction is exactly equal to the sum of currents leaving that junction.</p>
+        
+        <span class="formula">Sum of I_in = Sum of I_out</span>
 
-[Image of Kirchhoff's Current Law diagram showing currents entering and leaving a node]
+        <div class="diagram-container">
+            <svg width="300" height="200" viewBox="0 0 300 200">
+                <circle cx="150" cy="100" r="5" fill="black" />
+                <line x1="50" y1="100" x2="145" y2="100" stroke="blue" stroke-width="2" />
+                <path d="M 140 95 L 150 100 L 140 105 Z" fill="blue" />
+                <text x="60" y="90" fill="blue">I1 (In)</text>
+                <line x1="150" y1="20" x2="150" y2="95" stroke="blue" stroke-width="2" />
+                <path d="M 145 90 L 150 100 L 155 90 Z" fill="blue" />
+                <text x="160" y="50" fill="blue">I2 (In)</text>
+                <line x1="155" y1="100" x2="250" y2="100" stroke="red" stroke-width="2" />
+                <path d="M 240 95 L 250 100 L 240 105 Z" fill="red" />
+                <text x="210" y="90" fill="red">I3 (Out)</text>
+                <line x1="150" y1="105" x2="150" y2="180" stroke="red" stroke-width="2" />
+                <path d="M 145 170 L 150 180 L 155 170 Z" fill="red" />
+                <text x="160" y="160" fill="red">I4 (Out)</text>
+            </svg>
+            <div class="diagram-caption">Figure 1.1: Current distribution at a Node. Equation: I1 + I2 = I3 + I4</div>
+        </div>
 
-            <p><strong>Explanation:</strong> KCL is based on the <strong>Law of Conservation of Charge</strong>. It means no charge can accumulate at a node.</p>
+        <p><strong>Explanation:</strong> KCL is a statement of the <strong>Law of Conservation of Charge</strong>. Since a node has no capacity to store or generate charge, every electron that enters must leave immediately. This law is applicable to lumped parameter circuits.</p>
 
-            <h3>Kirchhoff's Voltage Law (KVL)</h3>
-            <p><strong>Statement (2M):</strong> In any closed loop of a network, the algebraic sum of all voltages (EMFs and IR drops) is zero.</p>
-            
-            <p><strong>Explanation:</strong> KVL is based on the <strong>Law of Conservation of Energy</strong>. The energy supplied by sources must equal energy consumed by loads.</p>
-        </div>
-    </div>
+        <h3>B. Kirchhoff's Voltage Law (KVL)</h3>
+        <p><strong>Statement:</strong> In any closed path (loop) of an electrical circuit, the algebraic sum of all EMFs plus the algebraic sum of all voltage drops (IR products) is zero.</p>
+        
+        <span class="formula">Sum of V = 0</span>
 
-    <div class="qa-card">
-        <div class="q-header" onclick="toggleQ(this)">
-            2. Active and Passive Elements <span class="marks-label">5M / 10M</span>
+        <div class="diagram-container">
+            <svg width="400" height="200" viewBox="0 0 400 200">
+                <rect x="50" y="40" width="300" height="120" fill="none" stroke="black" stroke-width="2" />
+                <line x1="50" y1="80" x2="50" y2="120" stroke="black" stroke-width="4" />
+                <line x1="40" y1="90" x2="60" y2="90" stroke="black" stroke-width="2" />
+                <line x1="45" y1="110" x2="55" y2="110" stroke="black" stroke-width="2" />
+                <text x="20" y="105">V_s</text>
+                <path d="M 150 40 L 160 30 L 170 50 L 180 30 L 190 50 L 200 40" fill="none" stroke="black" stroke-width="2" />
+                <text x="165" y="25">R1</text>
+                <path d="M 350 80 L 340 90 L 360 100 L 340 110 L 360 120 L 350 130" fill="none" stroke="black" stroke-width="2" />
+                <text x="365" y="110">R2</text>
+                <path d="M 180 80 A 20 20 0 1 1 220 80" fill="none" stroke="gray" stroke-width="2" stroke-dasharray="4" />
+                <path d="M 215 75 L 225 80 L 215 85 Z" fill="gray" />
+                <text x="180" y="120" fill="gray">Loop path</text>
+            </svg>
+            <div class="diagram-caption">Figure 1.2: A closed circuit loop. Equation: V_s - (I * R1) - (I * R2) = 0</div>
         </div>
-        <div class="q-body">
-            <table>
-                <tr><th>Active Elements</th><th>Passive Elements</th></tr>
-                <tr><td>Can generate energy for long periods.</td><td>Can only consume or store energy.</td></tr>
-                <tr><td>Capable of providing power gain.</td><td>Incapable of power gain.</td></tr>
-                <tr><td>Examples: Battery, DC Generator, Op-Amps.</td><td>Examples: Resistor, Inductor, Capacitor.</td></tr>
-            </table>
-            
-        </div>
-    </div>
 
-    <div class="qa-card">
-        <div class="q-header" onclick="toggleQ(this)">
-            4. Series R-C Circuit Numerical (R=10, C=0.1, V=20) <span class="marks-label">10M</span>
-        </div>
-        <div class="q-body">
-            <p><strong>Problem:</strong> Determine current equation and voltages at t=0.</p>
-            <div class="solution-step">
-                <button class="step-btn" onclick="toggleStep('q4-1')">1. Derive Current Eq</button>
-                <div id="q4-1" class="step-content">
-                    The general current equation for charging RC is: i(t) = (V/R) * exp(-t / RC).<br>
-                    Given: V = 20, R = 10, C = 0.1.<br>
-                    Time Constant (RC) = 10 * 0.1 = 1 second.<br>
-                    <strong>i(t) = 2 * exp(-t) Amperes.</strong>
-                </div>
-            </div>
-            <div class="solution-step">
-                <button class="step-btn" onclick="toggleStep('q4-2')">2. Voltages at t=0</button>
-                <div id="q4-2" class="step-content">
-                    At t = 0, exp(0) = 1.<br>
-                    Current i(0) = 2 Amperes.<br>
-                    <strong>Voltage across Resistor (Vr)</strong> = i(0) * R = 2 * 10 = <strong>20V.</strong><br>
-                    <strong>Voltage across Capacitor (Vc)</strong> = V - Vr = 20 - 20 = <strong>0V.</strong>
-                </div>
-            </div>
-            
-        </div>
-    </div>
+        <p><strong>Explanation:</strong> KVL represents the <strong>Law of Conservation of Energy</strong>. It states that the work done in moving a unit charge around any closed path is zero. This means the energy provided by the battery is exactly dissipated by the resistors in the loop.</p>
+    </section>
 
-    <div class="qa-card">
-        <div class="q-header" onclick="toggleQ(this)">
-            8(I). Nodal Analysis (Find V1 and V2) <span class="marks-label">10M</span>
-        </div>
-        <div class="q-body">
-            <p>Based on the green circuit with 1A and 4A current sources:</p>
-            <div class="solution-step">
-                <button class="step-btn" onclick="toggleStep('q8n-1')">Step 1: Node Equations</button>
-                <div id="q8n-1" class="step-content">
-                    Node 1: 1 = V1/2 + (V1 - V2)/6<br>
-                    Multiply by 6: 6 = 3V1 + V1 - V2 => 4V1 - V2 = 6 --- (1)<br><br>
-                    Node 2: (V1 - V2)/6 = V2/7 + 4<br>
-                    Multiply by 42: 7V1 - 7V2 = 6V2 + 168 => 7V1 - 13V2 = 168 --- (2)
-                </div>
-            </div>
-            <div class="solution-step">
-                <button class="step-btn" onclick="toggleStep('q8n-2')">Step 2: Final Values</button>
-                <div id="q8n-2" class="step-content">
-                    Solving (1) and (2):<br>
-                    V1 = (13*6 - 168) / (13*4 - 7) = (78 - 168) / 45 = -2V.<br>
-                    V2 = 4V1 - 6 = 4(-2) - 6 = -14V.<br>
-                    <strong>Result: V1 = -2V, V2 = -14V.</strong>
-                </div>
-            </div>
-        </div>
-    </div>
+    <section class="content-section">
+        <h2>2. Explain Active and Passive Elements (5-10 Marks)</h2>
+        <p>Electrical circuit elements are broadly classified into two categories based on their energy-handling capabilities.</p>
 
-    <div class="qa-card">
-        <div class="q-header" onclick="toggleQ(this)">
-            8(II). Mesh Analysis (Current through 10 Ohm) <span class="marks-label">10M</span>
-        </div>
-        <div class="q-body">
-            <p>Based on the circuit with 50V and 25V sources:</p>
-            <div class="solution-step">
-                <button class="step-btn" onclick="toggleStep('q8m-1')">Step 1: Mesh Eq</button>
-                <div id="q8m-1" class="step-content">
-                    Mesh 1: 50 - 10*I1 - 5(I1 - I2) = 0 => 15*I1 - 5*I2 = 50.<br>
-                    Mesh 2: -5(I2 - I1) - 10*I2 - 25 = 0 => -5*I1 + 15*I2 = -25.
-                </div>
-            </div>
-            <div class="solution-step">
-                <button class="step-btn" onclick="toggleStep('q8m-2')">Step 2: Results</button>
-                <div id="q8m-2" class="step-content">
-                    Solving for I1: 15*I1 - 5*I2 = 50, and -15*I1 + 45*I2 = -75.<br>
-                    40*I2 = -25 => I2 = -0.625A.<br>
-                    I1 = 3.125A.<br>
-                    <strong>Current through left 10 Ohm = 3.125A.</strong>
-                </div>
-            </div>
-        </div>
-    </div>
+        <div class="diagram-container">
+            <svg width="500" height="150" viewBox="0 0 500 150">
+                <circle cx="100" cy="60" r="30" fill="none" stroke="green" stroke-width="2" />
+                <line x1="100" y1="40" x2="100" y2="80" stroke="green" stroke-width="2" />
+                <line x1="85" y1="60" x2="115" y2="60" stroke="green" stroke-width="2" />
+                <text x="70" y="115" fill="green" font-weight="bold">ACTIVE (Source)</text>
+                
+                <line x1="200" y1="60" x2="300" y2="60" stroke="black" stroke-width="2" stroke-dasharray="5" />
+                <path d="M 290 55 L 305 60 L 290 65 Z" fill="black" />
+                <text x="215" y="50">Energy Flow</text>
 
-    <div class="qa-card">
-        <div class="q-header" onclick="toggleQ(this)">
-            10. Series Resistance Problem (2, 4, 6 Ohms) <span class="marks-label">5M / 10M</span>
+                <path d="M 380 60 L 390 45 L 400 75 L 410 45 L 420 75 L 430 60" fill="none" stroke="red" stroke-width="2" />
+                <text x="360" y="115" fill="red" font-weight="bold">PASSIVE (Load)</text>
+            </svg>
+            <div class="diagram-caption">Figure 2.1: Energy transfer from Active to Passive components.</div>
         </div>
-        <div class="q-body">
-            <p><strong>Total resistance (Rt)</strong> = 2 + 4 + 6 = <strong>12 Ohms.</strong><br>
-            <strong>Total Current (I)</strong> = V / Rt = 24 / 12 = <strong>2A.</strong><br><br>
-            <strong>Voltages:</strong><br>
-            V across 2 Ohm = 2 * 2 = <strong>4V.</strong><br>
-            V across 4 Ohm = 2 * 4 = <strong>8V.</strong><br>
-            V across 6 Ohm = 2 * 6 = <strong>12V.</strong><br>
-            <strong>Total Power</strong> = V * I = 24 * 2 = <strong>48W.</strong></p>
-            
-        </div>
-    </div>
 
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Active Elements</th>
+                    <th>Passive Elements</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Definition</strong></td>
+                    <td>Elements that generate or supply electrical energy to a circuit.</td>
+                    <td>Elements that receive, consume, or store electrical energy.</td>
+                </tr>
+                <tr>
+                    <td><strong>Power Gain</strong></td>
+                    <td>Capable of providing power gain (amplification).</td>
+                    <td>Incapable of providing any power gain.</td>
+                </tr>
+                <tr>
+                    <td><strong>Nature</strong></td>
+                    <td>Energy Donors.</td>
+                    <td>Energy Acceptors.</td>
+                </tr>
+                <tr>
+                    <td><strong>Examples</strong></td>
+                    <td>Batteries, DC Generators, Solar Cells, Transistors.</td>
+                    <td>Resistors, Inductors, Capacitors.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="important-note">
+            <strong>Key Concept:</strong> While inductors and capacitors store energy, they are still considered <strong>Passive</strong> because they cannot generate energy from a non-electrical source; they can only return energy previously received from an active source.
+        </div>
+    </section>
 </div>
 
 <script>
     function toggleQ(header) {
         header.parentElement.classList.toggle('active');
-    }
-
-    function toggleStep(id) {
-        const step = document.getElementById(id);
-        step.style.display = (step.style.display === 'block') ? 'none' : 'block';
     }
 </script>
 
