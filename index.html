@@ -3,217 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEE Unit-1: DC Circuits Full Q&A</title>
+    <title>BEE Unit-1: DC Circuits Master Guide</title>
     <style>
         :root {
-            --primary: #2563eb;
-            --secondary: #1e40af;
-            --bg: #f8fafc;
-            --card: #ffffff;
-            --text: #1e293b;
-            --success: #16a34a;
+            --primary: #0056b3;
+            --secondary: #28a745;
+            --accent: #ffc107;
+            --bg: #f8f9fa;
+            --text: #212529;
+            --white: #ffffff;
         }
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
+            padding: 0;
         }
         .container {
-            max-width: 900px;
-            margin: 0 auto;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background: var(--white);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
         }
         header {
             text-align: center;
-            padding: 30px 0;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border-radius: 12px;
+            border-bottom: 4px solid var(--primary);
             margin-bottom: 30px;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            padding-bottom: 10px;
         }
-        h1 { margin: 0; font-size: 1.8rem; }
-        h2 { border-bottom: 2px solid var(--primary); padding-bottom: 10px; color: var(--primary); margin-top: 40px;}
+        h1 { color: var(--primary); margin-bottom: 5px; }
+        .mark-badge {
+            font-size: 0.85em;
+            background: var(--accent);
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #000;
+        }
         
-        /* Question Card Styles */
-        .q-card {
-            background: var(--card);
-            border: 1px solid #e2e8f0;
+        /* Question Layout */
+        .question-block {
+            margin-bottom: 25px;
+            border: 1px solid #dee2e6;
             border-radius: 8px;
-            margin-bottom: 15px;
             overflow: hidden;
-            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
         }
-        .q-header {
-            padding: 15px 20px;
-            background: #f1f5f9;
+        .q-title {
+            background: #e9ecef;
+            padding: 15px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: bold;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .q-header:hover { background: #e2e8f0; }
-        .q-body {
+        .q-title:hover { background: #dde1e3; }
+        .q-content {
             display: none;
             padding: 20px;
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid #dee2e6;
         }
-        .active .q-body { display: block; }
+        .active .q-content { display: block; }
         
-        /* Mark Badges */
-        .marks {
-            font-size: 0.8rem;
-            background: var(--primary);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 12px;
+        /* Sub-steps for Numericals */
+        .step-box {
+            margin-top: 15px;
+            border-left: 4px solid var(--secondary);
+            padding-left: 15px;
+            background: #fdfdfd;
         }
-
-        /* Numerical Steps */
-        .step-container { margin-top: 15px; border-left: 3px solid var(--success); padding-left: 15px; }
-        .step-btn {
-            background: #f1f5f9;
-            border: 1px solid #cbd5e1;
-            padding: 5px 12px;
+        .btn-step {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin: 5px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 0.9rem;
-            margin-right: 5px;
-            margin-bottom: 5px;
         }
-        .step-btn:hover { background: #e2e8f0; }
-        .step-content { display: none; margin-top: 10px; background: #fdfdfd; padding: 10px; border-radius: 4px; border: 1px dashed #cbd5e1; }
-        
-        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
-        th, td { border: 1px solid #e2e8f0; padding: 10px; text-align: left; }
-        th { background: #f8fafc; }
-        code { color: #be185d; font-weight: bold; }
+        .btn-step:hover { opacity: 0.9; }
+        .step-detail { display: none; padding: 10px; margin-top: 5px; background: #fff; border: 1px dashed #ccc; }
+
+        .diagram-placeholder {
+            background: #f1f3f5;
+            border: 2px dashed #adb5bd;
+            padding: 20px;
+            text-align: center;
+            margin: 15px 0;
+            font-style: italic;
+            color: #495057;
+        }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { border: 1px solid #dee2e6; padding: 12px; text-align: left; }
+        th { background: #f8f9fa; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>Introduction to Electrical Engineering</h1>
-        <p>Unit-1: DC Circuits - Important Questions & Answers</p>
+        <h1>BEE Unit-1: DC Circuits</h1>
+        <p>Comprehensive Study Guide for Important Exam Questions</p>
     </header>
 
-    <h2>Part 1: Theory Questions</h2>
-
-    <div class="q-card">
-        <div class="q-header" onclick="toggleQ(this)">
-            1. State and explain KCL and KVL <span><span class="marks">5M/10M</span> ▾</span>
+    <div class="question-block">
+        <div class="q-title" onclick="toggleQ(this)">
+            1. State and explain KCL and KVL <span class="mark-badge">5M / 10M</span>
         </div>
-        <div class="q-body">
-            <strong>Statement (2M):</strong>
-            <ul>
-                <li><strong>KCL:</strong> The algebraic sum of currents meeting at a node is zero. (&Sigma;I = 0)</li>
-                <li><strong>KVL:</strong> The algebraic sum of all voltages in a closed loop is zero. (&Sigma;V = 0)</li>
-            </ul>
-            <strong>Explanation (5M/10M):</strong>
-            <p>KCL is based on the <strong>Law of Conservation of Charge</strong>. It states that incoming current equals outgoing current. 
-            KVL is based on the <strong>Law of Conservation of Energy</strong>. In any loop, the sum of EMFs equals the sum of IR drops.</p>
+        <div class="q-content">
+            <h3>Kirchhoff's Current Law (KCL)</h3>
+            <p><strong>Statement:</strong> The algebraic sum of currents meeting at any junction (node) in an electrical circuit is zero. Sum of incoming currents = Sum of outgoing currents.</p>
+            <div class="diagram-placeholder">[Insert Diagram: Node with arrows showing I1, I2 (in) and I3, I4 (out). Equation: I1+I2 = I3+I4]</div>
+            
+            <h3>Kirchhoff's Voltage Law (KVL)</h3>
+            <p><strong>Statement:</strong> In any closed loop of a network, the algebraic sum of all the voltages (potential rises and drops) is zero.</p>
+            <div class="diagram-placeholder">[Insert Diagram: Loop with Voltage Source V and Resistors R1, R2. Equation: V - IR1 - IR2 = 0]</div>
         </div>
     </div>
 
-    <div class="q-card">
-        <div class="q-header" onclick="toggleQ(this)">
-            2. Explain Active and Passive elements <span><span class="marks">5M</span> ▾</span>
+    <div class="question-block">
+        <div class="q-title" onclick="toggleQ(this)">
+            2. Explain Active and Passive Elements <span class="mark-badge">5M / 10M</span>
         </div>
-        <div class="q-body">
+        <div class="q-content">
             <table>
-                <tr><th>Active Elements</th><th>Passive Elements</th></tr>
-                <tr><td>Can generate/deliver energy.</td><td>Can only consume or store energy.</td></tr>
-                <li>Examples: Battery, Generator, Op-Amp.</li>
-                <li>Examples: Resistor, Inductor, Capacitor.</li>
+                <tr>
+                    <th>Feature</th>
+                    <th>Active Elements</th>
+                    <th>Passive Elements</th>
+                </tr>
+                <tr>
+                    <td><strong>Definition</strong></td>
+                    <td>Capable of delivering net energy to the circuit for long periods.</td>
+                    <td>Elements that store or dissipate energy.</td>
+                </tr>
+                <tr>
+                    <td><strong>Function</strong></td>
+                    <td>Energy generation/amplification.</td>
+                    <td>Energy consumption/storage.</td>
+                </tr>
+                <tr>
+                    <td><strong>Examples</strong></td>
+                    <td>Battery, Generator, Op-Amps, Transistors.</td>
+                    <td>Resistor (R), Inductor (L), Capacitor (C).</td>
+                </tr>
             </table>
+            <div class="diagram-placeholder">[Insert Diagram: Circuit symbols of a Battery vs. a Resistor]</div>
         </div>
     </div>
 
-    <div class="q-card">
-        <div class="q-header" onclick="toggleQ(this)">
-            3. Voltage vs Current Source (Ideal/Practical) <span><span class="marks">5M/10M</span> ▾</span>
+    <div class="question-block">
+        <div class="q-title" onclick="toggleQ(this)">
+            4. Series R-C Circuit Transient (Numerical) <span class="mark-badge">10M</span>
         </div>
-        <div class="q-body">
-            <p><strong>Ideal Voltage Source:</strong> Internal resistance is 0. Voltage remains constant regardless of load.</p>
-            <p><strong>Practical Voltage Source:</strong> Small internal resistance (Rs) in <strong>series</strong>.</p>
-            <p><strong>Ideal Current Source:</strong> Internal resistance is infinite. Current remains constant.</p>
-            <p><strong>Practical Current Source:</strong> High internal resistance (Rp) in <strong>parallel</strong>.</p>
-        </div>
-    </div>
-
-    <div class="q-card">
-        <div class="q-header" onclick="toggleQ(this)">
-            7. Thevenin’s and Norton’s Theorem <span><span class="marks">5M/10M</span> ▾</span>
-        </div>
-        <div class="q-body">
-            <p><strong>Thevenin's:</strong> Any linear network can be replaced by a voltage source <code>Vth</code> in series with <code>Rth</code>.</p>
-            <p><strong>Norton's:</strong> Any linear network can be replaced by a current source <code>In</code> in parallel with <code>Rn</code>.</p>
-            <p><em>Note: Rn is always equal to Rth.</em></p>
-        </div>
-    </div>
-
-    <h2>Part 2: Numerical Problems</h2>
-
-    <div class="q-card">
-        <div class="q-header" onclick="toggleQ(this)">
-            8(I). Find V1 and V2 using Nodal Analysis (Green Circuit) <span><span class="marks">10M</span> ▾</span>
-        </div>
-        <div class="q-body">
-            <div class="step-container">
-                <button class="step-btn" onclick="toggleStep('n1_s1')">Step 1: Equations</button>
-                <button class="step-btn" onclick="toggleStep('n1_s2')">Step 2: Final Answer</button>
-                <div id="n1_s1" class="step-content">
-                    Node V1: 1 = V1/2 + (V1-V2)/6 &rArr; 4V1 - V2 = 6<br>
-                    Node V2: (V1-V2)/6 = V2/7 + 4 &rArr; 7V1 - 13V2 = 168
+        <div class="q-content">
+            <p><strong>Given:</strong> R = 10 &Omega;, C = 0.1 F, V = 20 V, t = 0.</p>
+            <div class="step-box">
+                <button class="btn-step" onclick="toggleStep('q4s1')">Current Equation</button>
+                <button class="btn-step" onclick="toggleStep('q4s2')">Voltages at t=0</button>
+                <div id="q4s1" class="step-detail">
+                    Equation: <code>i(t) = (V/R) * e^(-t/RC)</code><br>
+                    RC = 10 * 0.1 = 1 second.<br>
+                    <strong>i(t) = 2 * e^(-t) Amperes.</strong>
                 </div>
-                <div id="n1_s2" class="step-content">
-                    Solving the system:<br>
-                    <strong>V1 = -2 V</strong><br>
+                <div id="q4s2" class="step-detail">
+                    At t=0:<br>
+                    <strong>Vr = i(0)*R = 2 * 10 = 20V</strong><br>
+                    <strong>Vc = V - Vr = 20 - 20 = 0V</strong> (Capacitor acts as a short circuit).
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="q-title" onclick="toggleQ(this)">
+            8(I). Find V1 and V2 using Nodal Analysis <span class="mark-badge">10M</span>
+        </div>
+        <div class="q-content">
+            <p>Referring to the provided Green Circuit Diagram:</p>
+            <div class="step-box">
+                <button class="btn-step" onclick="toggleStep('q8n1')">Node 1 Equation</button>
+                <button class="btn-step" onclick="toggleStep('q8n2')">Node 2 Equation</button>
+                <button class="btn-step" onclick="toggleStep('q8n3')">Final Solution</button>
+                <div id="q8n1" class="step-detail">
+                    At V1: 1A (incoming) = V1/2 + (V1-V2)/6<br>
+                    Multiply by 6: 6 = 3V1 + V1 - V2<br>
+                    <strong>4V1 - V2 = 6  ---(1)</strong>
+                </div>
+                <div id="q8n2" class="step-detail">
+                    At V2: (V1-V2)/6 = V2/7 + 4A (outgoing)<br>
+                    Multiply by 42: 7V1 - 7V2 = 6V2 + 168<br>
+                    <strong>7V1 - 13V2 = 168 ---(2)</strong>
+                </div>
+                <div id="q8n3" class="step-detail">
+                    Solving (1) and (2):<br>
+                    From (1): V2 = 4V1 - 6<br>
+                    Substitute in (2): 7V1 - 13(4V1 - 6) = 168<br>
+                    -45V1 = 90 &rarr; <strong>V1 = -2 V</strong><br>
                     <strong>V2 = -14 V</strong>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="q-card">
-        <div class="q-header" onclick="toggleQ(this)">
-            8(II). Evaluate current through 10 &Omega; (Mesh Analysis) <span><span class="marks">10M</span> ▾</span>
+    <div class="question-block">
+        <div class="q-title" onclick="toggleQ(this)">
+            8(II). Mesh Analysis: Current through 10 &Omega; Resistor <span class="mark-badge">10M</span>
         </div>
-        <div class="q-body">
-            <div class="step-container">
-                <button class="step-btn" onclick="toggleStep('m1_s1')">Step 1: Mesh Equations</button>
-                <button class="step-btn" onclick="toggleStep('m1_s2')">Step 2: Solution</button>
-                <div id="m1_s1" class="step-content">
-                    Mesh 1 (Left): 50 - 10i1 - 5(i1 - i2) = 0 &rArr; 15i1 - 5i2 = 50<br>
-                    Mesh 2 (Right): -5(i2 - i1) - 10i2 - 25 = 0 &rArr; -5i1 + 15i2 = -25
+        <div class="q-content">
+            <p>Referring to the provided Voltage Source Diagram (50V and 25V):</p>
+            <div class="step-box">
+                <button class="btn-step" onclick="toggleStep('q8m1')">Mesh Equations</button>
+                <button class="btn-step" onclick="toggleStep('q8m2')">Final Current</button>
+                <div id="q8m1" class="step-detail">
+                    Mesh 1: 50 - 10I1 - 5(I1 - I2) = 0 &rarr; 15I1 - 5I2 = 50 &rarr; <strong>3I1 - I2 = 10</strong><br>
+                    Mesh 2: -5(I2 - I1) - 10I2 - 25 = 0 &rarr; -5I1 + 15I2 = -25 &rarr; <strong>-I1 + 3I2 = -5</strong>
                 </div>
-                <div id="m1_s2" class="step-content">
+                <div id="q8m2" class="step-detail">
                     Solving:<br>
-                    i1 = 3.125 A (Current through left 10 &Omega;)<br>
-                    i2 = -0.625 A (Current through right 10 &Omega;)<br>
-                    <strong>Answer: 3.125 A</strong>
+                    I1 = 3.125 A, I2 = -0.625 A<br>
+                    <strong>Current through left 10 &Omega; = 3.125 A</strong><br>
+                    <strong>Current through right 10 &Omega; = 0.625 A</strong> (opposite to assumed direction).
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="q-card">
-        <div class="q-header" onclick="toggleQ(this)">
-            10. Three resistors (2&Omega;, 4&Omega;, 6&Omega;) in series across 24V <span><span class="marks">5M</span> ▾</span>
+    <div class="question-block">
+        <div class="q-title" onclick="toggleQ(this)">
+            9. Transient Response of Series R-L Circuit <span class="mark-badge">10M</span>
         </div>
-        <div class="q-body">
-            <p>Total Resistance (Rt) = 2 + 4 + 6 = <strong>12 &Omega;</strong></p>
-            <p>Total Current (I) = V / Rt = 24 / 12 = <strong>2 A</strong></p>
+        <div class="q-content">
+            <p>Consider a circuit with Voltage V, Resistor R, and Inductor L at t=0.</p>
+            <p><strong>KVL Equation:</strong> <code>V = Ri + L(di/dt)</code></p>
+            <p>Solving the differential equation using integration:</p>
+            <p><code>i(t) = (V/R) * (1 - e^(-t/&tau;))</code> where &tau; = L/R (Time Constant).</p>
+            <div class="diagram-placeholder">[Insert Diagram: Graph showing current 'i' rising exponentially from 0 to V/R]</div>
+        </div>
+    </div>
+
+    <div class="question-block">
+        <div class="q-title" onclick="toggleQ(this)">
+            10. Series Resistance Calculation (2, 4, 6 &Omega;) <span class="mark-badge">5M</span>
+        </div>
+        <div class="q-content">
+            <p><strong>Given:</strong> R1=2&Omega;, R2=4&Omega;, R3=6&Omega;, V=24V.</p>
             <ul>
-                <li>Voltage across 2&Omega;: 2A &times; 2&Omega; = 4V</li>
-                <li>Voltage across 4&Omega;: 2A &times; 4&Omega; = 8V</li>
-                <li>Voltage across 6&Omega;: 2A &times; 6&Omega; = 12V</li>
+                <li><strong>Total Resistance (Rt):</strong> 2 + 4 + 6 = 12 &Omega;</li>
+                <li><strong>Current (I):</strong> V / Rt = 24 / 12 = 2 A</li>
+                <li><strong>Voltage across R1:</strong> I * R1 = 2 * 2 = 4 V</li>
+                <li><strong>Voltage across R2:</strong> I * R2 = 2 * 4 = 8 V</li>
+                <li><strong>Voltage across R3:</strong> I * R3 = 2 * 6 = 12 V</li>
+                <li><strong>Total Power:</strong> V * I = 24 * 2 = 48 W</li>
             </ul>
-            <p>Total Power = V &times; I = 24V &times; 2A = <strong>48 W</strong></p>
         </div>
     </div>
 
@@ -225,8 +271,8 @@
     }
 
     function toggleStep(id) {
-        const el = document.getElementById(id);
-        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+        const step = document.getElementById(id);
+        step.style.display = (step.style.display === 'block') ? 'none' : 'block';
     }
 </script>
 
